@@ -1,0 +1,58 @@
+﻿<Window x:Class="POEPart3.TaskManger"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:POEPart3"
+        mc:Ignorable="d"
+        Title="TaskManger" Height="450" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Task Input Section -->
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10">
+            
+            <TextBox
+                x:Name="TaskDescriptionBox" 
+                Width="200" Margin="0,0,10,0" 
+                VerticalAlignment="Center" 
+                TextChanged="TaskDescriptionBox_TextChanged"/>
+
+            <DatePicker x:Name="TaskDatePicker" Width="120" Margin="0,0,10,0"/>
+            <Button 
+                Content="Add Task" 
+                Width="80" 
+                Click="add_task"/>
+        </StackPanel>
+
+        <!-- Active Tasks List -->
+        <GroupBox Header="Active Tasks" Grid.Row="1" Margin="0,0,0,10">
+            <ListBox 
+                x:Name="TaskListBox" 
+                Height="150" 
+                SelectionMode="Single">
+                <!-- Bind tasks here -->
+            </ListBox>
+        </GroupBox>
+
+        <!-- Done Tasks List -->
+        <GroupBox Header="Completed Tasks" Grid.Row="2">
+            <ListBox 
+                x:Name="DoneTaskListBox" 
+                Height="120" 
+                SelectionMode="Multiple"/>
+        </GroupBox>
+
+        <!-- Mark as Done Button -->
+        <Button Content="Mark as Done" 
+                Grid.Row="3" Width="120" 
+                HorizontalAlignment="Right" 
+                Margin="0,10,0,0"
+               Click="mark_done"/>
+    </Grid>
+</Window>

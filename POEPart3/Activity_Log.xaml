@@ -1,0 +1,50 @@
+﻿<Window x:Class="POEPart3.Activity_Log"
+        xmlns:local="clr-namespace:POEPart3"
+
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Activity Log" Height="450" Width="600">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- ComboBox to filter activity types -->
+        <ComboBox x:Name="FilterComboBox"
+                  Grid.Row="0"
+                  SelectionChanged="FilterComboBox_SelectionChanged"
+                  Width="150"
+                  Margin="0,0,0,10">
+            <ComboBoxItem Content="All Activities" IsSelected="True"/>
+            <ComboBoxItem Content="Login"/>
+            <ComboBoxItem Content="Quiz"/>
+            <ComboBoxItem Content="Chat"/>
+            <ComboBoxItem Content="Exit"/>
+        </ComboBox>
+
+        <!-- ListView to display activity entries -->
+        <ListView x:Name="ActivityListView"
+                  Grid.Row="1"
+                  ItemsSource="{x:Static local:Activity_Log.ActivityLog}"
+                  Margin="0,0,0,10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Time" DisplayMemberBinding="{Binding Time}" Width="150"/>
+                    <GridViewColumn Header="Activity" DisplayMemberBinding="{Binding ActivityType}" Width="150"/>
+                    <GridViewColumn Header="Details" DisplayMemberBinding="{Binding Description}" Width="250"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <!-- Clear button -->
+        <Button x:Name="ClearButton"
+                Grid.Row="2"
+                Content="Clear Log"
+                HorizontalAlignment="Right"
+                Width="100"
+                Click="ClearButton_Click"/>
+    </Grid>
+</Window>
